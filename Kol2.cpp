@@ -59,7 +59,7 @@ public:
 
     void setStanLicznika(int licznik) {
         if (licznik < 0) {
-            throw invalid_argument("Stan licznika nie może być ujemny");
+            throw invalid_argument("Stan licznika nie moze byc ujemny");
         }
         stan_licznika = licznik;
     }
@@ -98,18 +98,18 @@ public:
         cout << "Stan licznika: " << stan_licznika << " km" << endl;
         cout << "Stan dopuszczenia: " << (stan_dopuszczenia == Stan::dopuszczony ? "Dopuszczony" : "Niedopuszczony") << endl;
         if (owner != nullptr) {
-            cout << "Właściciel: Obiekt klasy Wlasciciel" << endl;
+            cout << "Wlasciciel: Obiekt klasy Wlasciciel" << endl;
         }
         else {
-            cout << "Właściciel: Brak danych" << endl;
+            cout << "Wlasciciel: Brak danych" << endl;
         }
         try {
-            cout << "Zasięg: " << obliczZasieg() << " km" << endl;
+            cout << "Zasieg: " << obliczZasieg() << " km" << endl;
         }
         catch (const runtime_error& e) {
-            cout << "Zasięg: " << e.what() << endl;
+            cout << "Zasieg: " << e.what() << endl;
         }
-        cout << "Wartość: " << obliczWartosc() << " PLN" << endl;
+        cout << "Wartosc: " << obliczWartosc() << " PLN" << endl;
     }
 
     static void setWzorcowySamochod(Samochod* samochod) {
@@ -177,14 +177,14 @@ int main() {
         samochod2.pokazDane();
     }
     catch (const runtime_error& e) {
-        cout << "Błąd: " << e.what() << endl;
+        cout << "Bład: " << e.what() << endl;
     }
 
     try {
         samochod1.setStanLicznika(-5000);
     }
     catch (const invalid_argument& e) {
-        cout << "Błąd: " << e.what() << endl;
+        cout << "Blad: " << e.what() << endl;
     }
 
     try {
@@ -193,14 +193,14 @@ int main() {
         elektrycznySamochod.pokazDane();
     }
     catch (const invalid_argument& e) {
-        cout << "Błąd: " << e.what() << endl;
+        cout << "Blad: " << e.what() << endl;
     }
 
     Samochod samochod3("ABC9876", 149980, Stan::dopuszczony, &wlasciciel1);
-    cout << "\nPorównanie samochodów 1 i 3: " << (samochod1 != samochod3 ? "Samochody są różne" : "Samochody są takie same") << endl;
+    cout << "\nPorownanie samochodow 1 i 3: " << (samochod1 != samochod3 ? "Samochody sa rozne" : "Samochody sa takie same") << endl;
 
     Samochod samochod4("XYZ1234", 150000, Stan::niedopuszczony, &wlasciciel1);
-    cout << "\nPorównanie samochodów 1 i 4: " << (samochod1 != samochod4 ? "Samochody są różne" : "Samochody są takie same") << endl;
+    cout << "\nPorownanie samochodow 1 i 4: " << (samochod1 != samochod4 ? "Samochody sa rozne" : "Samochody sa takie same") << endl;
 
     return 0;
 }
