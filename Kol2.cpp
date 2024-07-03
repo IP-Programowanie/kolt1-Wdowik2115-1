@@ -7,6 +7,7 @@ using namespace std;
 */
 
 #ifdef Kol_2
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cstring>
 #include <stdexcept>
