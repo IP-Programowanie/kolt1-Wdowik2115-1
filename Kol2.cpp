@@ -18,7 +18,7 @@ enum class Stan {
 };
 
 class Wlasciciel {
-   
+    
 };
 
 class Samochod {
@@ -118,6 +118,10 @@ public:
     static Samochod* getWzorcowySamochod() {
         return wzorcowy_samochod;
     }
+
+    bool operator!=(const Samochod& other) const {
+        return (abs(stan_licznika - other.stan_licznika) > 20) || (stan_dopuszczenia != other.stan_dopuszczenia);
+    }
 };
 
 Samochod* Samochod::wzorcowy_samochod = nullptr;
@@ -190,6 +194,12 @@ int main() {
     catch (const invalid_argument& e) {
         cout << "Błąd: " << e.what() << endl;
     }
+
+    Samochod samochod3("ABC9876", 149980, Stan::dopuszczony, &wlasciciel1);
+    cout << "\nPorównanie samochodów 1 i 3: " << (samochod1 != samochod3 ? "Samochody są różne" : "Samochody są takie same") << endl;
+
+    Samochod samochod4("XYZ1234", 150000, Stan::niedopuszczony, &wlasciciel1);
+    cout << "\nPorównanie samochodów 1 i 4: " << (samochod1 != samochod4 ? "Samochody są różne" : "Samochody są takie same") << endl;
 
     return 0;
 }
